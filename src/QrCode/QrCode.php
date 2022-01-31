@@ -82,10 +82,15 @@ final class QrCode
             ));
         }
 
-        $this->qrCodeWriter = match ($extension) {
-            self::FILE_FORMAT_SVG => new SvgWriter(),
-            default => new PngWriter(),
-        };
+        switch ($extension) {
+            case self::FILE_FORMAT_SVG:
+                $this->qrCodeWriter = new SvgWriter();
+                break;
+            default:
+                $this->qrCodeWriter = new PngWriter();
+                break;
+        }
+
     }
 
     private function getQrCodeResult(): ResultInterface

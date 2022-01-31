@@ -133,15 +133,22 @@ final class HtmlOutput extends AbstractOutput implements OutputInterface
         return $paymentPart;
     }
 
-    private function getContentElement(Title|Text|Placeholder $element): string
+    private function getContentElement($element): string
     {
-        # https://github.com/phpstan/phpstan/issues/4451
-        # @phpstan-ignore-next-line
-        return match (get_class($element)) {
-            Title::class => $this->getTitleElement($element),
-            Text::class => $this->getTextElement($element),
-            Placeholder::class => $this->getPlaceholderElement($element)
-        };
+
+        if ($element instanceof Title) {
+            return $this->getTitleElement($element);
+        }
+
+        if ($element instanceof Text) {
+
+            return $this->getTextElement($element);
+        }
+
+        if ($element instanceof Placeholder) {
+
+            return $this->getPlaceholderElement($element);
+        }
     }
 
     private function getTitleElement(Title $element): string

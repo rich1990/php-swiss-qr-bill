@@ -67,10 +67,12 @@ final class Placeholder implements OutputElementInterface
 
     public function getFile($type = self::FILE_TYPE_SVG): string
     {
-        return match ($type) {
-            self::FILE_TYPE_PNG => $this->filePng,
-            default => $this->fileSvg,
-        };
+        switch ($type) {
+            case self::FILE_TYPE_PNG:
+                return $this->filePng;
+            default:
+                return $this->fileSvg;
+        }
     }
 
     public function getWidth(): ?int

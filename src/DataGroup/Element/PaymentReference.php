@@ -114,7 +114,7 @@ final class PaymentReference implements GroupSequenceProviderInterface, QrCodeab
         ]);
     }
 
-    public function getGroupSequence(): array|GroupSequence
+    public function getGroupSequence()
     {
         return [
             'default',
