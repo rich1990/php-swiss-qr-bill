@@ -193,7 +193,9 @@ class PaymentPartTemplate
             </div>
         </td>
 
-            <td>
+            <td style="padding-left: 5mm;
+	padding-top: 5mm;
+	padding-right: 5mm;">
                     <h1>{{ text.paymentPart }}</h1>
                     <img src="{{ swiss-qr-image }}" id="qr-bill-swiss-qr-image">
                     <div>
