@@ -193,27 +193,28 @@ class PaymentPartTemplate
             </div>
         </td>
 
-        <td id="qr-bill-payment-part">
-            <div id="qr-bill-payment-part-left">
-                <h1>{{ text.paymentPart }}</h1>
-                <img src="{{ swiss-qr-image }}" id="qr-bill-swiss-qr-image">
-                <div id="qr-bill-amount-area">
-                    <div id="qr-bill-currency">
-                        {{ currency-content }}
+            <td>
+                    <h1>{{ text.paymentPart }}</h1>
+                    <img src="{{ swiss-qr-image }}" id="qr-bill-swiss-qr-image">
+                    <div>
+                        <div id="qr-bill-currency">
+                            {{ currency-content }}
+                        </div>
+                        <div id="qr-bill-amount">
+                            {{ amount-content }}
+                        </div>
                     </div>
-                    <div id="qr-bill-amount">
-                        {{ amount-content }}
+			</td>
+			<td>
+                <div id="qr-bill-payment-part-right">
+                    <div id="qr-bill-information">
+                        {{ information-content }}
                     </div>
                 </div>
-			</div>
-			<div id="qr-bill-payment-part-right">
-                <div id="qr-bill-information">
-                    {{ information-content }}
+                <div id="qr-bill-payment-further-information">
+                    {{ further-information-content }}
                 </div>
-			</div>
-			<div id="qr-bill-payment-further-information">
-			    {{ further-information-content }}
-            </div>
+
         </td>
 	</tr>
 </table>
