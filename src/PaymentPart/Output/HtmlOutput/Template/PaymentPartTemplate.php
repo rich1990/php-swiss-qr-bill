@@ -6,6 +6,13 @@ class PaymentPartTemplate
 {
     public const TEMPLATE = <<<EOT
 <style>
+table, td {font-size:12px;vertical-align:top;}
+h1 {font-size:17px;}
+h2 {font-size:13px;}
+h3 {font-size:12px;}
+td {padding-top:20px;
+p {padding-top:20px;}
+
 #qr-bill {
 	box-sizing: border-box;
 	border-collapse: collapse;
@@ -31,7 +38,7 @@ class PaymentPartTemplate
 
 /* h1 / h2 */
 #qr-bill h1 {
-	font-size: 11pt;
+	font-size: 9pt;
 	font-weight: bold;
 	margin: 0;
 	padding: 0;
@@ -170,53 +177,85 @@ class PaymentPartTemplate
 {{ printable-content }}
 </style>
 
-<table id="qr-bill">
+<table id="qr-bill" style="padding-left:0;table-layout: fixed;">
     <tr id="qr-bill-separate-info">
-        <td colspan="99"><span id="qr-bill-separate-info-text">{{ text.separate }}</span></td>
+        <td style="padding-left:0;padding-bottom:30px;"><span id="qr-bill-separate-info-text">{{ text.separate }}</span></td>
     </tr>
-	<tr>
-	    <td id="qr-bill-receipt">
-	        <h1>{{ text.receipt }}</h1>
-	        <div id="qr-bill-information-receipt">
-                {{ information-content-receipt }}
-            </div>
-            <div id="qr-bill-amount-area-receipt">
-                <div id="qr-bill-currency-receipt">
-                    {{ currency-content }}
-                </div>
-                <div id="qr-bill-amount-receipt">
-                    {{ amount-content-receipt }}
-                </div>
-            </div>
-            <div id="qr-bill-acceptance-point">
-                <h2>{{ text.acceptancePoint }}</h2>
-            </div>
+    <tr>
+        <td colspan="3" style="padding-left:0;padding-top:0px;padding-bottom:30px;box-sizing:border-box;border-top:1mm dashed black;">
+        </td>
+    </tr>
+	<tr style="border-top:1px solid #000;">
+	    <td id="qr-bill-receipt" style="padding-left:0;padding-top:0;width:260px;">
+            <table>
+                <tr><td style="padding-top:0;"><h1>{{ text.receipt }}</h1></td></tr>
+                <tr>
+                    <td style="height:250px;min-height:250px">
+            	        <div id="qr-bill-information-receipt">
+                            {{ information-content-receipt }}
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <!--<div id="qr-bill-amount-area-receipt">-->
+            <table style="padding:0;">
+                <tr>
+                    <td colspan="1" style="padding-left:0;padding-top:0;padding-right:15px;">
+                        <div id="qr-bill-currency-receipt">
+                            {{ currency-content }}
+                        </div>
+                    </td>
+                    <td colspan="1" style="padding-left:0;padding-top:0;">
+                        <div id="qr-bill-amount-receipt">
+                            {{ amount-content-receipt }}
+                        </div>
+                    </td>
+                    <td colspan="1"></td>
+                </tr>
+            </table>
+            <table style="text-align:right" align="right">
+                <tr>
+                    <td colspan="3" style="text-align:right;padding-top:40px;padding-right:20px;" align="right">
+                        <strong id="qr-bill-acceptance-point" style="text-align:right">{{ text.acceptancePoint }}</strong>
+                    </td>
+                </tr>
+            </table>
+            <!--</div>-->
         </td>
 
-            <td style="padding-left: 5mm;
-	padding-top: 5mm;
-	padding-right: 5mm;">
-                    <h1>{{ text.paymentPart }}</h1>
-                    <img src="{{ swiss-qr-image }}" id="qr-bill-swiss-qr-image">
-                    <div>
+        <td style="padding-left:30px;padding-top:0;width:260px;">
+            <table style="padding:0;">
+                <tr>
+                    <td colspan="3" style="height:253px;min-height:253px;padding-top:0;">
+                        <h1>{{ text.paymentPart }}</h1>
+                        <img src="{{ swiss-qr-image }}" id="qr-bill-swiss-qr-image">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="1" style="padding-right:15px;width:50px;max-width:50px">
                         <div id="qr-bill-currency">
                             {{ currency-content }}
                         </div>
+                    </td>
+                    <td colspan="1" style="width:50px;max-width:50px">
                         <div id="qr-bill-amount">
                             {{ amount-content }}
                         </div>
-                    </div>
-			</td>
-			<td>
-                <div id="qr-bill-payment-part-right">
-                    <div id="qr-bill-information">
-                        {{ information-content }}
-                    </div>
-                </div>
-                <div id="qr-bill-payment-further-information">
-                    {{ further-information-content }}
-                </div>
+                    </td>
+                    <td colspan="1"></td>
+                </tr>
+            </table>
+		</td>
 
+		<td style="padding-top:0;height:253px;min-height:253px;width:260px;">
+            <div id="qr-bill-payment-part-right">
+                <div id="qr-bill-information">
+                    {{ information-content }}
+                </div>
+            </div>
+            <div id="qr-bill-payment-further-information" style="padding-top:20px;margin-top:20px;">
+                {{ further-information-content }}
+            </div>
         </td>
 	</tr>
 </table>
