@@ -237,7 +237,7 @@ p {padding-top:20px;}
                             {{ currency-content }}
                         </div>
                     </td>
-                    <td colspan="1" style="width:50px;max-width:50px">
+                    <td colspan="1" style="width:80px;max-width:80px">
                         <div id="qr-bill-amount">
                             {{ amount-content }}
                         </div>
